@@ -151,10 +151,10 @@ def get_score(cookie, sno, year='', term=''):
                         "condition": " = ",
                         "property": "t.xh"
                     }
-                ],
+               ],
                 "args": [
                     "student"
-                ]
+               ]
             }
         }
     }
@@ -280,7 +280,7 @@ def get_available_courses(cookie, year, term, course_type, campus):
                     "%s",
                     "%s",
                     "%s"
-                ]
+               ]
             }
         }
     }
@@ -314,7 +314,7 @@ def add_course(cookie, resource_id, year, term):
                     "",
                     "",
                     ""
-                ],
+               ],
                 "responseParam": "dataSave"
             }
         }
@@ -369,7 +369,7 @@ def get_course_result(cookie, year, term):
                         "condition": " = ",
                         "property": "xq"
                     }
-                ],
+               ],
                 "args": []
             }
         }
@@ -410,7 +410,7 @@ def get_course_result_by_type(cookie, year, term, course_type):
                     "%s",
                     "%s",
                     "%s"
-                ]
+               ]
             }
         }
     }
@@ -459,7 +459,7 @@ def reset_password(cookie, new_password):
             parameters: {
                 "args": [
                     "%s"
-                ],
+               ],
                 "responseParam": "rs"
             }
         }
@@ -559,7 +559,7 @@ def get_required_credit(cookie, grade, tno):
                         "condition": " = ",
                         "property": "x.zyh"
                     }
-                ],
+               ],
                 "args": []
             }
         }
@@ -603,7 +603,7 @@ def get_earned_credit(cookie, sno, year='', term=''):
                     "%s",
                     "%s",
                     "01"
-                ]
+               ]
             }
         }
     }
@@ -646,7 +646,7 @@ def get_gpa(cookie, sno, year='', term=''):
                     "%s",
                     "%s",
                     ""
-                ]
+               ]
             }
         }
     }
@@ -658,14 +658,33 @@ def get_evaluate_list(cookie):
     url = 'http://uems.sysu.edu.cn/jwxt/xspjaction/xspjaction.action?method=getXspjlist'
     query_json = """
     {
-    header:{
-    "code": -100, "message": {
-    "title": "", "detail": ""}},body:{
-    dataStores:{
-    pj1Stroe:{
-    rowSet:{
-    "primary":[],"filter":[],"delete":[]},name:"pj1Stroe",pageNumber:1,pageSize:2147483647,recordCount:0,rowSetName:"pojo_com.neusoft.education.sysu.pj.xspj.model.PjsyfwModel"}},parameters:{
-    "args": []}}}
+        header: {
+            "code": -100,
+            "message": {
+                "title": "",
+                "detail": ""
+            }
+        },
+        body: {
+            dataStores: {
+                pj1Stroe: {
+                    rowSet: {
+                        "primary": [],
+                        "filter": [],
+                        "delete": []
+                    },
+                    name: "pj1Stroe",
+                    pageNumber: 1,
+                    pageSize: 2147483647,
+                    recordCount: 0,
+                    rowSetName: "pojo_com.neusoft.education.sysu.pj.xspj.model.PjsyfwModel"
+                }
+            },
+            parameters: {
+                "args": []
+            }
+        }
+    }
     """
     return retrive_data(url, cookie, query_json)
 
@@ -673,15 +692,34 @@ def get_question_list(cookie, question_type):
     url = 'http://uems.sysu.edu.cn/jwxt/xspjaction/xspjaction.action?method=getWjxx'
     query_json = """
     {
-    header:{
-    "code": -100, 
-    "message": {
-    "title": "", "detail": ""}},body:{
-    dataStores:{
-    wjStroe:{
-    rowSet:{
-    "primary":[],"filter":[],"delete":[]},name:"wjStroe",pageNumber:1,pageSize:2147483647,recordCount:0,rowSetName:"pojo_com.neusoft.education.sysu.pj.xspj.model.WjlyModel",order:" XSSX ASC "}},parameters:{
-    "args": ["%s"]}}}
+        header: {
+            "code": -100,
+            "message": {
+                "title": "",
+                "detail": ""
+            }
+        },
+        body: {
+            dataStores: {
+                wjStroe: {
+                    rowSet: {
+                        "primary": [],
+                        "filter": [],
+                        "delete": []
+                    },
+                    name: "wjStroe",
+                    pageNumber: 1,
+                    pageSize: 2147483647,
+                    recordCount: 0,
+                    rowSetName: "pojo_com.neusoft.education.sysu.pj.xspj.model.WjlyModel",
+                    order: " XSSX ASC "
+                }
+            },
+            parameters: {
+                "args": ["%s"]
+            }
+        }
+    }
     """ % str(question_type)
     return retrive_data(url, cookie, query_json)
 
@@ -689,28 +727,64 @@ def get_option_list(cookie, question):
     url = 'http://uems.sysu.edu.cn/jwxt/xspjaction/xspjaction.action?method=getQzlist'
     query_json = """
     {
-    header:{
-    "code": -100, "message": {
-    "title": "", "detail": ""}},body:{
-    dataStores:{
-    qzStore:{
-    rowSet:{
-    "primary":[],"filter":[],"delete":[]},name:"qzStore",pageNumber:1,pageSize:10,recordCount:0,rowSetName:"pojo_com.neusoft.education.sysu.pj.xspj.model.QzModel",order:" NAME ASC "}},parameters:{
-    "args": ["%s"]}}}
+        header: {
+            "code": -100,
+            "message": {
+                "title": "",
+                "detail": ""
+            }
+        },
+        body: {
+            dataStores: {
+                qzStore: {
+                    rowSet: {
+                        "primary": [],
+                        "filter": [],
+                        "delete": []
+                    },
+                    name: "qzStore",
+                    pageNumber: 1,
+                    pageSize: 10,
+                    recordCount: 0,
+                    rowSetName: "pojo_com.neusoft.education.sysu.pj.xspj.model.QzModel",
+                    order: " NAME ASC "
+                }
+            },
+            parameters: {
+                "args": ["%s"]
+            }
+        }
+    }
     """ % str(question)
     return retrive_data(url, cookie, query_json)
 
-def get_course_ooxx_code(cookie, jsbh, kch, khlx, jxbh, khtxbh, pjlx ):
+def get_course_ooxx_code(cookie, jsbh, kch, khlx, jxbh, khtxbh, pjlx):
     url = 'http://uems.sysu.edu.cn/jwxt/xspjaction/xspjaction.action?method=getPjsyfwbzj'
     query_json = """
     {
-    header:{
-    "code": -100, "message": {
-    "title": "", "detail": ""}},body:{
-    dataStores:{},
-    parameters:{
-    "args": ["%s","%s","%s","%s","%s","%s"],"responseParam":"bjid"}}}
-    """ % ( str(jsbh), str(kch), str(khlx), str(jxbh), str(khtxbh), str(pjlx) )
+        header: {
+            "code": -100,
+            "message": {
+                "title": "",
+                "detail": ""
+            }
+        },
+        body: {
+            dataStores: {},
+            parameters: {
+                "args": [
+                    "%s",
+                    "%s",
+                    "%s",
+                    "%s",
+                    "%s",
+                    "%s"
+               ],
+                "responseParam": "bjid"
+            }
+        }
+    }
+    """ % (str(jsbh), str(kch), str(khlx), str(jxbh), str(khtxbh), str(pjlx))
     return retrive_data(url, cookie, query_json)
 
 def submit_evaluation(cookie, question_list, course):
@@ -718,78 +792,54 @@ def submit_evaluation(cookie, question_list, course):
     question_number = len(question_list)
     question_param = ''
     for item in question_list:
-        question_id = item[ 0 ]
-        option_id = item[ 1 ]
+        question_id = item[0]
+        option_id = item[1]
         if question_id == question_list[-1][0]:
             break
         question_param += """
         {"wtid":"%s","jg":"%s","gxbh":"","resource_id":"","_t":"1"},
-        """ % ( question_id, option_id )
+        """ % (question_id, option_id)
     question_param += """
     {"wtid":"%s","jg":"","gxbh":"","resource_id":"","_t":"1"}
     """ % question_list[-1][0]
     query_json = """
     {
-    header:{
-    "code": -100, "message": {
-    "title": "", "detail": ""}},body:{
-    dataStores:{
-    itemStore:{
-    rowSet:{
-    "primary":[%s],"filter":[],"delete":[]},
-    name:"itemStore",pageNumber:1,pageSize:2147483647,recordCount:%s,rowSetName:"pojo_com.neusoft.education.sysu.pj.xspj.entity.DtjglyEntity"}},parameters:{
-    "args": ["ds_itemStore_all", "%s"], "responseParam": "bj"}}}
+        header: {
+            "code": -100,
+            "message": {
+                "title": "",
+                "detail": ""
+            }
+        },
+        body: {
+            dataStores: {
+                itemStore: {
+                    rowSet: {
+                        "primary": [%s],
+                        "filter": [],
+                        "delete": []
+                    },
+                    name: "itemStore",
+                    pageNumber: 1,
+                    pageSize: 2147483647,
+                    recordCount: %s,
+                    rowSetName: "pojo_com.neusoft.education.sysu.pj.xspj.entity.DtjglyEntity"
+                }
+            },
+            parameters: {
+                "args": [
+                    "ds_itemStore_all",
+                    "%s"
+               ],
+                "responseParam": "bj"
+            }
+        }
+    }
     """ % (str(question_param), str(question_number), str(course))
-    logging.debug( "submit_evaluation query_json is : %s" % query_json )
+    logging.debug("submit_evaluation query_json is : %s" % query_json)
     return retrive_data(url, cookie, query_json)
 
-def one_click_evaluate(cookie):
-    evaluate = get_evaluate_list(cookie)
-    if evaluate[0] is True:
-        evaluate = json.loads(format_to_json(evaluate[1]))
-    else:
-        return ( False, 'fail to get course list!' )
-    courses = evaluate['body']['dataStores']['pj1Stroe']['rowSet']['primary']
-    for course in courses:
-        course_id = course['resourceid']
-        try:
-            question_type = course['khtxbh']
-        except:
-            question_type = course['j']
-        questions = get_question_list(cookie, question_type)
-        question_list = []
-        if questions[0] is True:
-            questions = json.loads(format_to_json(questions[1]))
-            questions = questions['body']['dataStores']['wjStroe']['rowSet']['primary']
-        else:
-            return ( False, 'fail to get question list on course %s!' % course_id )
-        for question in questions:
-            question_id = question['resourceId']
-            if question is questions[-1]:
-                question_list.append( [ question_id, None ] )
-                break
-            options = get_option_list(cookie, question['resourceId'])
-            if options[0] is True:
-                options = json.loads(format_to_json(options[1]))
-            else:
-                return ( False, 'fail to get option list on question %s!' % question_id )
-            option_id = options['body']['dataStores']['qzStore']['rowSet']['primary'][0]['resourceid']
-            question_list.append( [ question_id, option_id ] )
-        course_ooxx_code = get_course_ooxx_code( cookie, course['jsbh'], course['kch'], course['khlx'], course['jxbh'], course['khtxbh'], course['pjlx'] )
-        if course_ooxx_code[0] is True:
-            logging.debug(course_ooxx_code[1])
-            course_ooxx_code = json.loads(format_to_json(course_ooxx_code[1]))
-            course_ooxx_code = course_ooxx_code['body']['parameters']['bjid']
-        else:
-            return ( False, 'fail to get ooxx_code on course %s!' % course_id )
-        logging.debug(course_ooxx_code)
-        result = submit_evaluation(cookie, question_list, course_ooxx_code)
-        logging.debug( result )
 
-        
-        
-
-    
 # all following methods left for future usage
 def get_aaa(cookie):
     url = 'http://uems.sysu.edu.cn/jwxt/xsxk/xsxk.action?method=getJxjhByxh'
